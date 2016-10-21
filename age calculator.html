@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   <title> Calculating the AGE</title>
+   <script type="text/javascript">
+   
+ 
+   var elem=[];
+   		   
+		   
+		   
+		   function calAge()
+		   {
+		    var arrForm = document.forms[0];
+			 
+			 elem=[arrForm.length];
+			
+			for(var i =0; i<arrForm.length;i++)
+			{
+			 elem[i] = arrForm.elements[i];
+			}
+			
+		   	var date1 = elem[0].value;//document.getElementById("date").value;
+			var Month1 = elem[1].value;//document.getElementById("month").value;
+			var year1 = elem[2].value;//document.getElementById("year").value;
+			
+			var currDate = new Date();
+			var date2 = currDate.getDate();
+			var Month2 = currDate.getMonth();
+				Month2 += 1;
+			var year2 = currDate.getFullYear();			
+			
+			var fDate = date2 - date1;
+			var fMonth = Month2 - Month1;			
+			var fYear = year2-year1;
+			
+			
+			if(fDate < 0)
+        	{
+   		 		 fMonth-=1;
+				 fDate = 30 + fDate;
+   			}
+			
+    		if(fMonth<0)
+    		{
+        		fYear-=1;
+				fMonth = 12 + fMonth;
+    		}
+		
+			if(date1.length == 0 || Month1.length == 0 || year1.length == 0)
+			{
+			 		 alert("Invalid Data");
+					 return;
+			}
+			
+			alert("Age is " + fYear + " Years " + fMonth + " Months " + fDate + " Days"  );
+			//zip();
+		   }
+		   
+		   function zip()
+		   {
+            	var y=document.getElementById('Zip').value;
+							//	document.write(elem[4]);
+				if(y.length!=5)
+				{
+				 document.getElementById('zipVal').innerHTML="wrong Zip code";
+				}
+				if(y.length==5)
+				{
+					  document.getElementById('zipVal').innerHTML="yes";
+				}
+        	}
+			
+			function phone()
+		   {
+            	var x=document.getElementById('PhNo').value;
+								
+				if(x.length!=10)
+				{
+				 document.getElementById('PhoneNo').innerHTML="wrong Phone Number";
+				}
+				if(x.length==10)
+				{
+					  document.getElementById('PhoneNo').innerHTML="yes";
+				}
+        	}
+			
+   </script>
+  </head>
+  
+  <!-- Body Section starts -->
+  
+  <body>
+  		<form>
+			  <h3>Enter your DOB : <input type="number" id="date" size="1" />
+			  <select id="month" >
+			  		  <option value="" disabled="" selected="" hidden="" style="font-weight:lighter;" > select MONTH</option>
+					  <option value="1"> January </option>
+					  <option value="2"> Febraury </option>
+					  <option value="3"> March </option>
+					  <option value="4"> April </option>
+					  <option value="5"> May </option>
+					  <option value="6"> June </option>
+					  <option value="7"> July </option>
+					  <option value="8"> August </option>
+					  <option value="9"> September </option>
+					  <option value="10"> October </option>
+					  <option value="11"> November </option>
+					  <option value="12"> December </option>
+			  </select>
+			  <input type="number" id="year" size="3" />
+			  <br/> 
+			  <br/>
+			  
+			  <input type="submit" value="AGE Calculate" style="font-weight:bolder;" onclick="calAge()" />
+			  
+			  <br/>
+			  <br/>
+			  
+			  <h4>Zip Code :  <input type="number" id="Zip" onfocusout="zip()" /><br />
+			  <label id="zipVal" > </label>
+			  
+			  <br/>
+			  <br/>
+			  
+			  Phone No. :<input type="number" id="PhNo" onfocusout="phone()" /><br />
+			  <label id="PhoneNo" > </label>
+			  
+		</form>
+  </body>
+</html>
